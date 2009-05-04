@@ -7,7 +7,7 @@ WriteMakefile(
     AUTHOR              => 'Diego Kuperman <diego@freekeylabs.com>',
     VERSION_FROM        => 'lib/WWW/Twitpic.pm',
     ABSTRACT_FROM       => 'lib/WWW/Twitpic.pm',
-    EXE_FILES           => [ 'lib/twitpic' ],
+    EXE_FILES           => [ 'bin/twitpic' ],
     PREREQ_PM => {
         'Test::More'                    => 0,
         'Moose'                         => 0,
