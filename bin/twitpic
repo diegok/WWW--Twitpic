@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 
 use strict;
-use WWW::Twitpic::API;
 use Getopt::Long;
 use Pod::Usage;
+
+use WWW::Twitpic;
 
 my $username = undef;
 my $password = undef;
@@ -21,9 +22,9 @@ GetOptions(
 
 $file = shift unless $file;
 
-pod2usage(2) unless ( $username && $password && $file );
+pod2usage(1) unless ( $username && $password && $file );
 
-my $client = WWW::Twitpic::API->new(
+my $client = WWW::Twitpic->new(
     username => $username,
     password => $password
 );
@@ -39,13 +40,13 @@ die $@ if $@;
 
 print $pic->dump;
 
-__END__
+1;
 
 =head1 NAME
 
-twitpic.pl - Post image to twitter/twitpic from the commandline
+twitpic.pl - Post image to twitter/twitpic from the command-line
 
-=head1 USAGE
+=head1 SYNOPSIS
 
 twitpic.pl [options] filename
 
@@ -70,5 +71,9 @@ twitpic.pl -f filename [options]
 
 Diego Kuperman
 
-=cut
+=head1 COPYRIGHT
 
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
