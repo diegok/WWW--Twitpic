@@ -72,9 +72,38 @@ has 'response' => (
 
 =head1 METHODS
 
+=head2 username
+    set/get the twitter username
+
+=head2 password
+    set/get the password for the username provided.
+
+=head2 ua
+    Set/get the user agent make API calls.
+    LWP::UserAgent->new() by default.
+
+=head2 uri
+    Base URI to the API.
+
+=head2 response
+    The WWW::Twitpic::API::Response from the last post or upload.
+    
+=head2 has_response
+    Check if exists a reponse.
+
+=head2 meta
+    See L<Moose>.
 =cut
 
 =head2 upload
+
+    Upload the provided image to twitpic.com
+
+    Returns WWW::Twitpic::API::Response
+
+    Example: $api->upload( '/tmp/my_picture.jpg' );
+
+    See L<http://twitpic.com/api.do#upload>
 
 =cut
 sub upload {
@@ -87,6 +116,16 @@ sub upload {
 }
 
 =head2 post
+
+    Upload the provided image to twitpic.com and post it
+    on the username twitter feed with the optional
+    message provided.
+
+    Returns WWW::Twitpic::API::Response
+
+    Example: $api->post( '/tmp/my_picture.jpg' => "Look ma, I'm on twitter!");
+
+    See L<http://twitpic.com/api.do#uploadAndPost>
 
 =cut
 sub post {
@@ -143,8 +182,6 @@ Diego Kuperman, C<< <diego at freekeylabs.com> >>
 Please report any bugs or feature requests to C<bug-www-twitpic-api at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Twitpic>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT

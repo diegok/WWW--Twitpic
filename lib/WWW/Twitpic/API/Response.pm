@@ -18,7 +18,6 @@ has 'xml' => (
 has 'struct' => (
     is        => 'rw',
     isa       => 'HashRef',
-    predicate => 'has_struct'
 );
 
 =head1 SYNOPSIS
@@ -119,6 +118,11 @@ sub _resize_uri {
         : undef;
 }
 
+=head2 meta
+    See L<Moose>.
+=cut
+    
+    
 =head1 AUTHOR
 
 Diego Kuperman, C<< <diego at freekeylabs.com> >>
@@ -128,8 +132,6 @@ Diego Kuperman, C<< <diego at freekeylabs.com> >>
 Please report any bugs or feature requests to C<bug-www-twitpic-api at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Twitpic>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT
