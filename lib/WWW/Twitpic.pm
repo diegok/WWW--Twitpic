@@ -1,11 +1,10 @@
 package WWW::Twitpic;
-
-use warnings;
-use strict;
+use Moose;
+extends 'WWW::Twitpic::API';
 
 =head1 NAME
 
-WWW::Twitpic - The great new WWW::Twitpic!
+WWW::Twitpic - Use the twitpic.com simple API from our favorite language.
 
 =head1 VERSION
 
@@ -15,38 +14,25 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+This module module is just an interface to the simple api described at http://twitpic.com/api.do
 
-Perhaps a little code snippet.
+Using this module, you'll easily post images to twitpic.com and to your twitter feed.
+
 
     use WWW::Twitpic;
 
-    my $foo = WWW::Twitpic->new();
-    ...
+    my $client = WWW::Twitpic->new( 
+        username => 'your twitter username',
+        password => 'your twitter password'
+    );
+    my $post = $client->post( '/path/to/image.jpg' => 'Message to post with the image on twitter' )
+    # $post is a WWW::Twitpic::API::Response
 
-=head1 EXPORT
+=head1 METHODS
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
+At this moment, this is doing what WWW::Twitpic::API does.
 
 =head1 AUTHOR
 
@@ -57,9 +43,6 @@ Diego Kuperman, C<< <diego at freekeylabs.com> >>
 Please report any bugs or feature requests to C<bug-www-twitpic at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Twitpic>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
-
 
 =head1 SUPPORT
 
@@ -91,8 +74,12 @@ L<http://search.cpan.org/dist/WWW-Twitpic>
 =back
 
 
-=head1 ACKNOWLEDGEMENTS
+=head1 SEE ALSO
 
+    WWW::Twitpic::API
+    WWW::Twitpic::API::Response
+
+    http://twitpic.com
 
 =head1 COPYRIGHT & LICENSE
 
