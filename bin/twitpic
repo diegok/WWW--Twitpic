@@ -38,7 +38,18 @@ else {
 }
 die $@ if $@;
 
-print $pic->dump;
+if ( $@ ) {
+    print "Net error: $@\n";
+}
+elsif ( $pic->is_success ) {
+    print 'Image ID: ', $pic->id, "\n";
+    print 'Url:   ', $pic->url, "\n";
+    print 'Thumb: ', $pic->url_thumb, "\n";
+    print 'Mini:  ', $pic->url_mini, "\n";
+}
+else {
+    print "Error: ", $pic->error, "\n";
+}
 
 1;
 

@@ -1,8 +1,7 @@
 package WWW::Twitpic::API::Response;
 use Moose;
 
-use XML::Simple;
-use Data::Dumper;
+use XML::Simple qw( XMLin );
 
 =head1 NAME
 
@@ -31,6 +30,10 @@ has 'struct' => (
 
 =head2 is_success
 
+    Boolean flag to check the response status.
+
+    You can check the error() message when false. 
+
 =cut
 sub is_success {
     my $self = shift; 
@@ -42,6 +45,8 @@ sub is_success {
 }
 
 =head2 error
+    
+    Returns the error message if any.
 
 =cut
 sub error {
@@ -56,23 +61,64 @@ sub error {
     return undef;
 }
 
-sub dump {
+=head2 id
+
+    The id asigned to the uploaded image.
+
+=cut
+sub id {
     my $self = shift;
     
-    return Dumper( $self->struct );
+    return $self->is_success ? $self->struct->{mediaid} : undef; 
 }
 
+=head2 url
+
+    The URI for the uploaded image.
+
+=cut
 sub url {
     my $self = shift;
     
     return $self->is_success ? URI->new( $self->struct->{mediaurl} ) : undef; 
 }
 
-sub id {
-    my $self = shift;
+=head2 url_thumb
+
+    The URI of the generated thumbnail for the uploaded image.
+
+=cut
+sub url_thumb { $_[0]->_resize_uri('thumb'); }
+
+=head2 url_mini
+
+    The URI of the generated mini-view for the uploaded image.
     
-    return $self->is_success ? $self->struct->{mediaid} : undef; 
+=cut
+sub url_mini  { $_[0]->_resize_uri('mini'); }
+
+=head2 xml
+
+    The response xml source.
+
+=head2 struct
+    
+    The respnse href struct.
+
+=head2 _resize_uri
+
+    Helper method to generate rezize uri's
+
+=cut
+sub _resize_uri {
+    my ( $self, $size ) = @_;
+    $size ||= 'thumb';
+
+    return $self->is_success
+        ? URI->new( 'http://twitpic.com/show/' . $size . '/' . $self->id )
+        : undef;
 }
+
 =head1 AUTHOR
 
 Diego Kuperman, C<< <diego at freekeylabs.com> >>

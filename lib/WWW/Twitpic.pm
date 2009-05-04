@@ -16,7 +16,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-This module module is just an interface to the simple api described at http://twitpic.com/api.do
+This module module is just an interface to the simple api described at L<http://twitpic.com/api.do>
 
 Using this module, you'll easily post images to twitpic.com and to your twitter feed.
 
@@ -27,12 +27,22 @@ Using this module, you'll easily post images to twitpic.com and to your twitter 
         username => 'your twitter username',
         password => 'your twitter password'
     );
-    my $post = $client->post( '/path/to/image.jpg' => 'Message to post with the image on twitter' )
-    # $post is a WWW::Twitpic::API::Response
+
+    my $res = $client->post( '/path/to/image.jpg' => 'Message to post with the image on twitter' );
+    
+    # $res is a WWW::Twitpic::API::Response
+    print $res->is_success ? $res->url : $res->error;
+
 
 =head1 METHODS
 
-At this moment, this is doing what WWW::Twitpic::API does.
+At this moment, this is doing what L<WWW::Twitpic::API> does.
+
+=head2 meta
+
+    See L<Moose>.
+
+=cut
 
 =head1 AUTHOR
 
@@ -76,10 +86,10 @@ L<http://search.cpan.org/dist/WWW-Twitpic>
 
 =head1 SEE ALSO
 
-    WWW::Twitpic::API
-    WWW::Twitpic::API::Response
+    L<WWW::Twitpic::API>
+    L<WWW::Twitpic::API::Response>
 
-    http://twitpic.com
+    L<http://twitpic.com>
 
 =head1 COPYRIGHT & LICENSE
 
@@ -91,4 +101,4 @@ under the same terms as Perl itself.
 
 =cut
 no Moose;
-1; # End of WWW::Twitpic
+1;
