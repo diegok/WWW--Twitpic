@@ -6,6 +6,8 @@ use Pod::Usage;
 
 use WWW::Twitpic;
 
+our $VERSION = '0.02';
+
 my $username = undef;
 my $password = undef;
 my $file     = undef;
@@ -55,13 +57,13 @@ else {
 
 =head1 NAME
 
-twitpic.pl - Post image to twitter/twitpic from the command-line
+twitpic - Post image to twitter/twitpic from the command-line
 
 =head1 SYNOPSIS
 
-twitpic.pl [options] filename
+twitpic [options] filename
 
-twitpic.pl -f filename [options]
+twitpic -f filename [options]
 
  Options:
    -v -verbose        Show progress details
@@ -76,7 +78,7 @@ twitpic.pl -f filename [options]
 
 =head1 EXAMPLES
 
- twitpic.pl -u username -p password -m 'Look at this picture!' /path/to/image.jpg
+ twitpic -u username -p password -m 'Look at this picture!' /path/to/image.jpg
 
 =head1 AUTHOR
 

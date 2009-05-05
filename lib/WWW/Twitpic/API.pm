@@ -4,11 +4,11 @@ use Moose::Util::TypeConstraints;
 
 =head1 NAME
 
-WWW::Twitpic::API - The great new WWW::Twitpic::API!
+WWW::Twitpic::API - Twitpic simple API
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
